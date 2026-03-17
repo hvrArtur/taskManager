@@ -1,0 +1,6 @@
+<Project>
+  <PropertyGroup>
+    <!-- Keep project-reference builds sequential in this environment -->
+    <BuildInParallel>false</BuildInParallel>
+  </PropertyGroup>
+</Project>

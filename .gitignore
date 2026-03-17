@@ -43,6 +43,14 @@ CodeCoverage/
 
 # MSBuild Binary and Structured Log
 *.binlog
+*.log
+*.log.*
+*.trx
+*.trace
+*.dmp
+
+# Local .NET CLI home/cache
+.dotnet/
 
 # MSTest test Results
 [Tt]est[Rr]esult*/
