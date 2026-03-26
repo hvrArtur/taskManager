@@ -7,6 +7,7 @@ public sealed class TaskManagerDbContext(DbContextOptions<TaskManagerDbContext> 
 {
     public DbSet<User> Users => Set<User>();
     public DbSet<Team> Teams => Set<Team>();
+    public DbSet<Ticket> Tickets => Set<Ticket>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

@@ -11,4 +11,22 @@ public sealed class UserRepository(TaskManagerDbContext dbContext) : IUserReposi
         return await dbContext.Users
             .FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
     }
+
+    public async Task AddAsync(User user, CancellationToken cancellationToken)
+    {
+        await dbContext.Users.AddAsync(user, cancellationToken);
+        await dbContext.SaveChangesAsync(cancellationToken);
+    }
+
+    public async Task DeleteAsync(User user, CancellationToken cancellationToken)
+    {
+        dbContext.Users.Remove(user);
+        await dbContext.SaveChangesAsync(cancellationToken);
+    }
+
+    public async Task<bool> ExistsByNickNameAsync(string nickName, CancellationToken cancellationToken)
+    {
+        return await dbContext.Users
+            .AnyAsync(x => x.NickName == nickName, cancellationToken);
+    }
 }

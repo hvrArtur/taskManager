@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using TaskManager.Application.Exceptions;
-using TaskManager.Application.Features.Teams.CreateTeam;
+using TaskManager.Application.Features.Team.CreateTeam;
 
 namespace TaskManager.Api.Controllers;
 

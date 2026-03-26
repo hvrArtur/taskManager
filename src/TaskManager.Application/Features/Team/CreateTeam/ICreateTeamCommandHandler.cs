@@ -1,4 +1,4 @@
-namespace TaskManager.Application.Features.Teams.CreateTeam;
+namespace TaskManager.Application.Features.Team.CreateTeam;
 
 public interface ICreateTeamCommandHandler
 {

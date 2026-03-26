@@ -2,7 +2,7 @@ using TaskManager.Application.Abstractions.Persistence;
 using TaskManager.Application.Exceptions;
 using TaskManager.Domain.Entities;
 
-namespace TaskManager.Application.Features.Teams.CreateTeam;
+namespace TaskManager.Application.Features.Team.CreateTeam;
 
 public sealed class CreateTeamCommandHandler(
     IUserRepository userRepository,
@@ -21,7 +21,7 @@ public sealed class CreateTeamCommandHandler(
         if (alreadyExists)
             throw new ConflictException($"Team with name '{command.Name}' already exists.");
 
-        var team = new Team(command.Name, owner);
+        var team = new TaskManager.Domain.Entities.Team(command.Name, owner);
         await teamRepository.AddAsync(team, cancellationToken);
 
         return new CreateTeamResponse(team.Id, team.Name, team.OwnerId, team.CreatedAt);

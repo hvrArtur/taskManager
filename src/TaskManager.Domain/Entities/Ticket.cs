@@ -2,7 +2,7 @@ using TaskManager.Domain.ValueObjects;
 
 namespace TaskManager.Domain.Entities;
 
-public class Task
+public class Ticket
 {
     public Guid Id { get; private set; }
 
@@ -25,7 +25,7 @@ public class Task
 
     public DateTime CreatedAt { get; private set; }
 
-    public Task(string name, string description, User creator)
+    public Ticket(string name, string description, User creator)
     {
         ArgumentNullException.ThrowIfNull(creator);
         Id = Guid.NewGuid();
@@ -36,7 +36,7 @@ public class Task
         CreatorId = creator.Id;
     }
 
-    private Task()
+    private Ticket()
     {
     }
 
