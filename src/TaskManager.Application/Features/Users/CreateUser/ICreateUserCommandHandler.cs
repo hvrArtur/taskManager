@@ -1,4 +1,4 @@
-namespace TaskManager.Application.Features.User.CreateUser;
+namespace TaskManager.Application.Features.Users.CreateUser;
 
 public interface ICreateUserCommandHandler
 {

@@ -1,7 +1,7 @@
 using TaskManager.Application.Abstractions.Persistence;
 using TaskManager.Application.Exceptions;
 
-namespace TaskManager.Application.Features.User.DeleteUser;
+namespace TaskManager.Application.Features.Users.DeleteUser;
 
 public sealed class DeleteUserCommandHandler(
     IUserRepository userRepository) : IDeleteUserCommandHandler

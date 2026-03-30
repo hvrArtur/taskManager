@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using TaskManager.Application.Exceptions;
-using TaskManager.Application.Features.Team.CreateTeam;
+using TaskManager.Application.Features.Teams.CreateTeam;
 
 namespace TaskManager.Api.Controllers;
 
@@ -12,20 +11,8 @@ public sealed class TeamsController(ICreateTeamCommandHandler createTeamCommandH
     public async Task<IActionResult> Create([FromBody] CreateTeamRequest request, CancellationToken cancellationToken)
     {
         var command = new CreateTeamCommand(request.Name, request.OwnerId);
-
-        try
-        {
-            var result = await createTeamCommandHandler.HandleAsync(command, cancellationToken);
-            return Ok(result);
-        }
-        catch (NotFoundException ex)
-        {
-            return NotFound(new { error = ex.Message });
-        }
-        catch (ConflictException ex)
-        {
-            return Conflict(new { error = ex.Message });
-        }
+        var result = await createTeamCommandHandler.HandleAsync(command, cancellationToken);
+        return Ok(result);
     }
 }
 

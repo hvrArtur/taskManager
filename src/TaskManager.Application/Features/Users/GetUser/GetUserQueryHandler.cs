@@ -1,7 +1,7 @@
 using TaskManager.Application.Abstractions.Persistence;
 using TaskManager.Application.Exceptions;
 
-namespace TaskManager.Application.Features.User.GetUser;
+namespace TaskManager.Application.Features.Users.GetUser;
 
 public sealed class GetUserQueryHandler(
     IUserRepository userRepository) : IGetUserQueryHandler

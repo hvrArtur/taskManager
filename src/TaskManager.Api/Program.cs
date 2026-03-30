@@ -1,7 +1,16 @@
 using Microsoft.EntityFrameworkCore;
+using TaskManager.Api.Configuration;
+using TaskManager.Api.Middleware;
 using TaskManager.Application;
 using TaskManager.Infrastructure;
 using TaskManager.Infrastructure.Persistence;
+
+EnvFileLoader.LoadFromCurrentDirectoryTree();
+
+var rootDirectory = Directory.GetCurrentDirectory();
+EnvFileLoader.Load(
+    Path.Combine(rootDirectory, ".env"),
+    Path.Combine(rootDirectory, "src", "TaskManager.Api", ".env"));
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +21,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 using (var scope = app.Services.CreateScope())
 {

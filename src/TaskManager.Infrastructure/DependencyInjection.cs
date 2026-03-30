@@ -12,7 +12,9 @@ public static class DependencyInjection
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
         var connectionString = configuration.GetConnectionString("DefaultConnection")
-            ?? throw new InvalidOperationException("Connection string 'DefaultConnection' is not configured.");
+            ?? throw new InvalidOperationException(
+                "Connection string 'DefaultConnection' is not configured. " +
+                "Set 'ConnectionStrings__DefaultConnection' in a local .env file or environment variable.");
 
         services.AddDbContext<TaskManagerDbContext>(options =>
             options.UseNpgsql(connectionString));

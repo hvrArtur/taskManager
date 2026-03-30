@@ -1,4 +1,4 @@
-namespace TaskManager.Application.Features.User.DeleteUser;
+namespace TaskManager.Application.Features.Users.DeleteUser;
 
 public interface IDeleteUserCommandHandler
 {

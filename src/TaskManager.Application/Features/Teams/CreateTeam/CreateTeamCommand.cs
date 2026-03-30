@@ -1,3 +1,3 @@
-namespace TaskManager.Application.Features.Team.CreateTeam;
+namespace TaskManager.Application.Features.Teams.CreateTeam;
 
 public sealed record CreateTeamCommand(string Name, Guid OwnerId);

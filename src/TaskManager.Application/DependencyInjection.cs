@@ -1,8 +1,8 @@
 using Microsoft.Extensions.DependencyInjection;
-using TaskManager.Application.Features.Team.CreateTeam;
-using TaskManager.Application.Features.User.CreateUser;
-using TaskManager.Application.Features.User.GetUser;
-using TaskManager.Application.Features.User.DeleteUser;
+using TaskManager.Application.Features.Teams.CreateTeam;
+using TaskManager.Application.Features.Users.CreateUser;
+using TaskManager.Application.Features.Users.GetUser;
+using TaskManager.Application.Features.Users.DeleteUser;
 
 namespace TaskManager.Application;
 

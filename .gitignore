@@ -48,7 +48,9 @@ CodeCoverage/
 *.trx
 *.trace
 *.dmp
-
+.env
+.env.*
+!.env.example
 # Local .NET CLI home/cache
 .dotnet/
 

@@ -1,4 +1,4 @@
-namespace TaskManager.Application.Features.User.GetUser;
+namespace TaskManager.Application.Features.Users.GetUser;
 
 public interface IGetUserQueryHandler
 {
