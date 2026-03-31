@@ -23,17 +23,24 @@ public class Ticket
     public Guid CreatorId { get; private set; }
     public User Creator { get; private set; } = null!;
 
+    public Guid TeamId { get; private set; }
+    public Team Team { get; private set; } = null!;
+
     public DateTime CreatedAt { get; private set; }
 
-    public Ticket(string name, string description, User creator)
+    public Ticket(string name, string description, User creator, Team team)
     {
         ArgumentNullException.ThrowIfNull(creator);
+        ArgumentNullException.ThrowIfNull(team);
+
         Id = Guid.NewGuid();
         CreatedAt = DateTime.UtcNow;
         Name = name;
         Description = description;
         Creator = creator;
         CreatorId = creator.Id;
+        Team = team;
+        TeamId = team.Id;
     }
 
     private Ticket()

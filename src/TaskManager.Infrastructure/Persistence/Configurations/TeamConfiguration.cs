@@ -36,6 +36,27 @@ public sealed class TeamConfiguration : IEntityTypeConfiguration<Team>
             .HasForeignKey(x => x.OwnerId)
             .OnDelete(DeleteBehavior.Restrict);
 
-        builder.Ignore(x => x.Members);
+        builder.Navigation(x => x.Members)
+            .UsePropertyAccessMode(PropertyAccessMode.Field);
+
+        builder.HasMany(x => x.Members)
+            .WithMany()
+            .UsingEntity<Dictionary<string, object>>(
+                "team_members",
+                join => join
+                    .HasOne<User>()
+                    .WithMany()
+                    .HasForeignKey("user_id")
+                    .OnDelete(DeleteBehavior.Cascade),
+                join => join
+                    .HasOne<Team>()
+                    .WithMany()
+                    .HasForeignKey("team_id")
+                    .OnDelete(DeleteBehavior.Cascade),
+                join =>
+                {
+                    join.ToTable("team_members");
+                    join.HasKey("team_id", "user_id");
+                });
     }
 }

@@ -4,6 +4,9 @@ namespace TaskManager.Application.Abstractions.Persistence;
 
 public interface ITeamRepository
 {
-    System.Threading.Tasks.Task<bool> ExistsByNameAsync(string name, CancellationToken cancellationToken);
-    System.Threading.Tasks.Task AddAsync(Team team, CancellationToken cancellationToken);
+    Task<Team?> GetByIdAsync(Guid id, CancellationToken cancellationToken);
+    Task<bool> ExistsByNameAsync(string name, CancellationToken cancellationToken);
+    Task AddAsync(Team team, CancellationToken cancellationToken);
+    Task UpdateAsync(Team team, CancellationToken cancellationToken);
+    Task DeleteAsync(Team team, CancellationToken cancellationToken);
 }

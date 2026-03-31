@@ -12,6 +12,12 @@ public sealed class UserRepository(TaskManagerDbContext dbContext) : IUserReposi
             .FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
     }
 
+    public async Task<User?> GetByNickNameAsync(string nickName, CancellationToken cancellationToken)
+    {
+        return await dbContext.Users
+            .FirstOrDefaultAsync(x => x.NickName == nickName, cancellationToken);
+    }
+
     public async Task AddAsync(User user, CancellationToken cancellationToken)
     {
         await dbContext.Users.AddAsync(user, cancellationToken);

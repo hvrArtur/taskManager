@@ -11,6 +11,13 @@ public sealed class ExceptionHandlingMiddleware(RequestDelegate next, ILogger<Ex
         {
             await next(context);
         }
+        catch (OperationCanceledException) when (context.RequestAborted.IsCancellationRequested)
+        {
+            logger.LogInformation(
+                "Request was canceled by the client {Method} {Path}",
+                context.Request.Method,
+                context.Request.Path);
+        }
         catch (Exception ex)
         {
             logger.LogError(ex, "Unhandled exception while processing request {Method} {Path}", context.Request.Method, context.Request.Path);

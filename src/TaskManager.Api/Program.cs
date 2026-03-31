@@ -22,7 +22,9 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-app.UseMiddleware<ExceptionHandlingMiddleware>();
+app.UseWhen(
+    context => context.Request.Path.StartsWithSegments("/api"),
+    branch => branch.UseMiddleware<ExceptionHandlingMiddleware>());
 
 using (var scope = app.Services.CreateScope())
 {

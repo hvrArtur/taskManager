@@ -33,9 +33,18 @@ public sealed class TicketConfiguration : IEntityTypeConfiguration<Ticket>
             .HasColumnName("creator_id")
             .IsRequired();
 
+        builder.Property(x => x.TeamId)
+            .HasColumnName("team_id")
+            .IsRequired();
+
         builder.HasOne(x => x.Creator)
             .WithMany()
             .HasForeignKey(x => x.CreatorId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        builder.HasOne(x => x.Team)
+            .WithMany()
+            .HasForeignKey(x => x.TeamId)
             .OnDelete(DeleteBehavior.Restrict);
     }
 }

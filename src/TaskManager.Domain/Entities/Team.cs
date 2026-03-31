@@ -39,7 +39,7 @@ public class Team
     {
         ArgumentNullException.ThrowIfNull(user);
 
-        if (_members.Any(m => m.Id == user.Id))
+        if (_members.Any(m => m.Id == user.Id) || user.Id == OwnerId)
             return false;
 
         _members.Add(user);
@@ -54,6 +54,11 @@ public class Team
             return false;
 
         return _members.Remove(user);
+    }
+
+    public bool HasMember(Guid userId)
+    {
+        return OwnerId == userId || _members.Any(member => member.Id == userId);
     }
 
     public void Rename(string name)
